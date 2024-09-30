@@ -1,0 +1,11 @@
+{
+    "name": "sena/isamaking",
+    "autoload": {
+        "psr-4": {
+            "Sena\\Isamaking\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
