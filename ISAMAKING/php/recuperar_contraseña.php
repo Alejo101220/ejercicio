@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
 
     // Conexión a la base de datos
-    $conn = new mysqli("localhost", "root", "", "isamaking");
+    $conn = new PDO ("localhost", "root", "", "isamaking");
 
     if ($conn->connect_error) {
         die("Conexión fallida: " . $conn->connect_error);

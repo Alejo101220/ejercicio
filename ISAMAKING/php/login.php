@@ -18,7 +18,7 @@ if(isset($_POST['login'])){
                         //administrador
                         echo '<script>
         alert ("Iniciaste Sesion Correctamente")
-        window.location.href = "../HTMLS/administrador.html"
+        window.location.href = "../php/administrador.php"
         </script>';
                         break;
                     case '2':

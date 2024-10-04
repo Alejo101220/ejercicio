@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2024 a las 20:22:41
+-- Tiempo de generación: 30-09-2024 a las 15:37:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,8 +67,10 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `email`, `telefono`, `clave`, `rol`) VALUES
 (2, 'Kevin alejandro torres zamora', 'kevinalejandrotorrezamora@gmail.com', '213214124', '$2y$10$RKwfSAS9.gYLPb5LyVYL3O5f5fDAHxcwCkpWccoAkVQzOuOUmndY.', 1),
-(3, 'dilan ', 'dilanfantas@gmail.com', '3138975212', '$2y$10$nbb/2FzPsuTDoXg4l/421OKc4Fy9MlnLzVEMceXc.DwuGosq6J1.y', 2),
-(4, 'mono', 'chompes.22k@gmail.com', '3209524332', '$2y$10$QndrzjHhE1dPCxuBVYEW5.zeYcVcLc5udku5U.J.MVdSV4DXr8er6', 2);
+(3, 'dylan', 'al405727@gmail.com', '3138975212', '$2y$10$nbb/2FzPsuTDoXg4l/421OKc4Fy9MlnLzVEMceXc.DwuGosq6J1.y', 2),
+(4, 'mono', 'chompes.22k@gmail.com', '3209524332', '$2y$10$QndrzjHhE1dPCxuBVYEW5.zeYcVcLc5udku5U.J.MVdSV4DXr8er6', 2),
+(6, 'alejandra', 'halopez@gmail.com', '3161240857', '$2y$10$PGVDuc0TGQjwPpETzrXltuwOs1adijHGWY.RNFxEo6.TswWuaYf5q', 1),
+(7, 'fidel', 'fideljoseespi10@gmail.com', '3142758305', '$2y$10$ve/.zlTYekarlfxvSYwECOApIOXn5fuaWP.pOHEHRJDtPXJLGuE3m', 2);
 
 -- --------------------------------------------------------
 
@@ -139,6 +141,28 @@ CREATE TABLE `producto` (
   `id_categoria` int(11) NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recuperaciones`
+--
+
+CREATE TABLE `recuperaciones` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expira` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `recuperaciones`
+--
+
+INSERT INTO `recuperaciones` (`id`, `email`, `token`, `expira`) VALUES
+(1, 'fideljoseespi10@gmail.com', 'aee454cf17b280fe2d56c628292aa2b7c574fc12027aa150fdea9ad95c77bf55363a23338e4ec0c893929b72d9fd15fbf99e', '0000-00-00 00:00:00'),
+(2, 'fideljoseespi10@gmail.com', '01fdd504ace7dacec4f036eec22c16284e275dbfee5625afc8aa78bd6a3833f0ffe415c4e619094489ebd374d300d39fefca', '0000-00-00 00:00:00'),
+(3, 'fideljoseespi10@gmail.com', '9a57f0f3e4823cdcd000f31201c3fe3949cac7ce307bafd48c6703e05e8cdbae891fb6f136325b51acc3343994b4a8c6ef0c', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -221,6 +245,12 @@ ALTER TABLE `producto`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
+-- Indices de la tabla `recuperaciones`
+--
+ALTER TABLE `recuperaciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -246,7 +276,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedido`
@@ -276,7 +306,13 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `recuperaciones`
+--
+ALTER TABLE `recuperaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -328,6 +364,6 @@ ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
 COMMIT;
 
-/*crud productos */
-
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
